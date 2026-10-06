@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dirty Marbles</title>
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Dirty Marbles</h1>
+      <p>Local game, or a private room.</p>
+    </div>
+    <label>Players
+      <select id="count">
+        <option>2</option>
+        <option>3</option>
+        <option selected>4</option>
+        <option>5</option>
+        <option>6</option>
+      </select>
+    </label>
+    <label>Cards
+      <select id="hand-size">
+        <option selected>5</option>
+        <option>6</option>
+        <option>7</option>
+      </select>
+    </label>
+  </header>
+  <main>
+    <svg id="board" aria-label="Dirty Marbles board"></svg>
+    <aside>
+      <p id="turn" class="turn">Loading board…</p>
+      <p id="status">Loading board…</p>
+      <p id="win" hidden></p>
+      <h2>Hand</h2>
+      <div id="hand"></div>
+      <h2>Seats</h2>
+      <ul id="seats"></ul>
+      <h2>Chat</h2>
+      <div id="chat-log"></div>
+      <form id="chat-form">
+        <input id="chat-text" maxlength="200" placeholder="Message the room" autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
+      <button id="restart" type="button">New game</button>
+      <p id="confirm" hidden>Start a new game? The current game will be lost. <button id="confirm-yes" type="button">Yes</button> <button id="confirm-no" type="button">No</button></p>
+      <label class="option"><input id="no-jokers" type="checkbox"> No jokers</label>
+      <label class="option"><input id="safe-start" type="checkbox"> Start is safe</label>
+      <label class="option" id="partners-option"><input id="partners" type="checkbox"> Play as partners</label>
+      <label class="option"><input id="solitaire" type="checkbox"> Solitaire</label>
+      <h2>Room</h2>
+      <label>Name <input id="nick" maxlength="12" placeholder="Short name"></label>
+      <button id="create-room" type="button">Create Room and New Game</button>
+      <p id="room-code"></p>
+      <label>Join code <input id="join-code" maxlength="4"></label>
+      <button id="join-room" type="button">Join room</button>
+      <h2>Locked rules</h2>
+      <ul id="rules"></ul>
+    </aside>
+  </main>
+  <footer>A room code connects browsers after everyone opens this page. Solitaire stays on this computer.</footer>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="js/layouts.js"></script>
+  <script src="js/rules.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/online.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
